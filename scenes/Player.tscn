@@ -3,8 +3,6 @@
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/zombie.png" type="Texture" id=2]
 
-
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.0
 
@@ -15,13 +13,18 @@ THROW_FORCE = 1200
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Pivot" type="Position2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Pivot"]
 position = Vector2( 17.5658, 0.35849 )
 texture = ExtResource( 2 )
+
+[node name="PlayerCamera" type="Camera2D" parent="Pivot"]
+current = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 50, 0 )
 
 [node name="BallHold" type="Position2D" parent="."]
-position = Vector2( 35, 0 )
+position = Vector2( 42, 0 )
