@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zombie.png-c3b3bc9d5f5ee77c87d3298dd185606a.stex"
+path="res://.import/ball.png-dbfca04ee0bd630c71df985dd5b09bcc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://zombie.png"
-dest_files=[ "res://.import/zombie.png-c3b3bc9d5f5ee77c87d3298dd185606a.stex" ]
+source_file="res://sprites/ball.png"
+dest_files=[ "res://.import/ball.png-dbfca04ee0bd630c71df985dd5b09bcc.stex" ]
 
 [params]
 

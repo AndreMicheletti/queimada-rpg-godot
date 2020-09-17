@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tdthumb.png-9d5d980ba0403d3c4fc22ae4216b6fd4.stex"
+path="res://.import/soldier.png-481a94239a4ef8de78626e4ec9970760.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tdthumb.png"
-dest_files=[ "res://.import/tdthumb.png-9d5d980ba0403d3c4fc22ae4216b6fd4.stex" ]
+source_file="res://sprites/soldier.png"
+dest_files=[ "res://.import/soldier.png-481a94239a4ef8de78626e4ec9970760.stex" ]
 
 [params]
 

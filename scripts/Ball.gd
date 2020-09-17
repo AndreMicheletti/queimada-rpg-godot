@@ -22,7 +22,6 @@ func _physics_process(delta):
 	#	current_speed = 0
 	#	velocity = Vector2()
 	#	return
-	print(velocity, " - " , velocity.length())
 	if abs(velocity.x) <= STOP_THRESHOLD and abs(velocity.y) <= STOP_THRESHOLD:
 		velocity = Vector2()
 	
