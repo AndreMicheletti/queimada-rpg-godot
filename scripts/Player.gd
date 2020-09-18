@@ -36,9 +36,10 @@ func _physics_process(delta):
 	else:
 		var coll = raycast.get_collider()
 		if raycast.is_colliding() and coll.name == "Ball":
-			print("BALL HAS BEEN PICKED UP BY ", self)
-			coll.pick_up()
-			holding_ball = coll
+			if not coll.is_hot():
+				print("BALL HAS BEEN PICKED UP BY ", self)
+				coll.pick_up()
+				holding_ball = coll
 
 func hit(projectile_velocity):
 	# rotation = atan2(pos.y, pos.x)
