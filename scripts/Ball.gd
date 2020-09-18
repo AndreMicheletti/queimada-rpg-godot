@@ -1,15 +1,11 @@
-extends KinematicBody2D
+extends "res://scripts/PhysicsObject.gd"
 
-const STOP_THRESHOLD = 85.0
 const HOT_THRESHOLD = 320.0
-const DRAG = .97
-const HIT_DRAG = .80
 
 var holded = false
-var velocity = Vector2()
+var character = null
 
 onready var collBox = $CollisionShape2D
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,30 +13,16 @@ func _ready():
 
 
 func _physics_process(delta):
-	#if current_speed <= 5.0:
-	#	current_speed = 0
-	#	velocity = Vector2()
-	#	return
-	if not is_hot():
+	if not is_hot() or not is_moving():
 		$FlyParticles.emitting = false
-	if velocity.length() <= STOP_THRESHOLD:
-		velocity = Vector2()
-		$FlyParticles.emitting = false
-		return
-
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		velocity = velocity.bounce(collision.normal)
-		reduce_velocity(HIT_DRAG)
-		if is_hot() and collision.collider.has_method("hit"):
-			collision.collider.hit()
-	reduce_velocity(DRAG)
+		self.character = null
+	._physics_process(delta)
+	print(self.character)
 
 
-func reduce_velocity(ratio):
-	# ration must between 0 and 1 (example: if 0.97 will reduce velocity by 3%)
-	velocity.x *= ratio
-	velocity.y *= ratio
+func on_collision(collider):
+	if is_hot() and collider.has_method("hit") and not collider == self.character:
+		collider.hit(velocity)
 
 
 func is_hot():
@@ -48,17 +30,20 @@ func is_hot():
 
 
 func pick_up():
-	velocity = Vector2()
-	holded = true
-	collBox.disabled = true
+	if is_hot():
+		return
+	self.velocity = Vector2()
+	self.holded = true
+	self.collBox.disabled = true
 
 
-func throw(pos, dir, speed):
-	holded = false
-	collBox.disabled = false
-	rotation = dir
-	# position = pos
-	velocity = Vector2(speed, 0).rotated(rotation)
+func throw(shooter, pos, dir, speed):
+	self.character = shooter
+	self.holded = false
+	self.collBox.disabled = false
+	self.collision_layer
+	self.rotation = dir
+	self.velocity = Vector2(speed, 0).rotated(rotation)
 	$FlyParticles.emitting = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
