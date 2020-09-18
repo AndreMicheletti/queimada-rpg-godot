@@ -44,6 +44,7 @@ current = true
 enabled = true
 cast_to = Vector2( 50, 0 )
 collision_mask = 4
+collide_with_areas = true
 
 [node name="BallHold" type="Position2D" parent="."]
 position = Vector2( 42, 0 )

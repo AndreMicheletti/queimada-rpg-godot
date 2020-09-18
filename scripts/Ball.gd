@@ -17,7 +17,6 @@ func _physics_process(delta):
 		$FlyParticles.emitting = false
 		self.character = null
 	._physics_process(delta)
-	print(self.character)
 
 
 func on_collision(collider):
