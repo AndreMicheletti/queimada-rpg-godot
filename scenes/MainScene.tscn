@@ -3,12 +3,14 @@
 [ext_resource path="res://assets/dust.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Joystick/Joystick.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Joystick/throwing-ball.png" type="Texture" id=5]
+[ext_resource path="res://scenes/ui/GameUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sprites/flare3.bmp" type="Texture" id=7]
+[ext_resource path="res://scripts/GameState.gd" type="Script" id=8]
 
 [node name="MainScene" type="Node"]
+script = ExtResource( 8 )
+PlayerPath = NodePath("World/Objects/Player")
 
 [node name="World" type="Node2D" parent="."]
 
@@ -41,8 +43,8 @@ shadow_enabled = true
 [node name="Player" parent="World/Objects" instance=ExtResource( 3 )]
 position = Vector2( 672.424, 234.734 )
 THROW_FORCE = 1500
-joystickLeftPath = NodePath("../../../CanvasLayer/Joystick Left")
-joystickRightPath = NodePath("../../../CanvasLayer/Joystick Right")
+joystickLeftPath = NodePath("../../../GameUI/Joystick Left")
+joystickRightPath = NodePath("../../../GameUI/Joystick Right")
 
 [node name="Ball" parent="World/Objects" instance=ExtResource( 2 )]
 position = Vector2( 825, 233 )
@@ -53,21 +55,4 @@ position = Vector2( 153.408, 220.003 )
 [node name="Enemy2" parent="World/Objects" instance=ExtResource( 6 )]
 position = Vector2( 276.863, 313.137 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Joystick Left" parent="CanvasLayer" instance=ExtResource( 4 )]
-
-[node name="Joystick Right" parent="CanvasLayer" instance=ExtResource( 4 )]
-margin_left = 669.883
-margin_right = 969.883
-
-[node name="Control" type="TextureButton" parent="CanvasLayer"]
-margin_left = 846.085
-margin_top = 198.425
-margin_right = 942.085
-margin_bottom = 294.425
-texture_normal = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="pressed" from="CanvasLayer/Control" to="World/Objects/Player" method="_on_Control_pressed"]
+[node name="GameUI" parent="." instance=ExtResource( 4 )]

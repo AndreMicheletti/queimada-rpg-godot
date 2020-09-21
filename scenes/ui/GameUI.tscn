@@ -1,40 +1,42 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Joystick/Joystick.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Joystick/Joystick.gd" type="Script" id=1]
+[ext_resource path="res://Joystick/throwing-ball.png" type="Texture" id=2]
+[ext_resource path="res://Joystick/Joystick.tscn" type="PackedScene" id=3]
 
-[node name="GameUI" type="MarginContainer"]
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Joystick Left" type="Control" parent="." instance=ExtResource( 3 )]
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -40.0
-custom_constants/margin_right = 20
-custom_constants/margin_top = 20
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 20
+margin_top = -300.0
+margin_right = 300.0
+rect_pivot_offset = Vector2( 150, 150 )
+mouse_filter = 1
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Controls" type="Control" parent="."]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 1004.0
-margin_bottom = 20.0
+[node name="Joystick Right" type="Control" parent="." instance=ExtResource( 3 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 669.883
+margin_top = -300.0
+margin_right = 969.883
+rect_pivot_offset = Vector2( 150, 150 )
+mouse_filter = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Joystick Left" parent="Controls" instance=ExtResource( 1 )]
-anchor_top = 0.0
-anchor_bottom = 0.0
-margin_left = 173.0
-margin_top = 0.0
-margin_right = 173.0
-
-[node name="Joystick Right" parent="Controls" instance=ExtResource( 1 )]
-anchor_top = 0.0
-anchor_bottom = 0.0
-margin_left = 810.0
-margin_top = 0.0
-margin_right = 810.0
-
-[editable path="Controls/Joystick Left"]
-
-[editable path="Controls/Joystick Right"]
+[node name="Control" type="TextureButton" parent="."]
+margin_left = 846.085
+margin_top = 198.425
+margin_right = 942.085
+margin_bottom = 294.425
+texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

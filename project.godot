@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Joystick",
 "language": "GDScript",
 "path": "res://Joystick/Joystick.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scripts/Player.gd"
 } ]
 _global_script_class_icons={
-"Joystick": ""
+"Joystick": "",
+"Player": ""
 }
 
 [application]
